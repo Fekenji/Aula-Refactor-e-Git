@@ -12,6 +12,14 @@ public class GildedRose {
     }
 
     private void updateItem(Item item) {
+        updateItemQuality(item);
+        updateItemSellIn(item);
+        updateItemQualityPostSellIn(item);
+        updateItemSellIn(item);
+        enforceQualityBounds(item);
+    }
+
+    private void updateItemQuality(Item item) {
         if (!item.name.equals("Aged Brie")
                 && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")
                 && !item.name.equals("Conjured Mana Cake")
@@ -50,11 +58,15 @@ public class GildedRose {
                 }
             }
         }
+    }
 
+    private void updateItemSellIn(Item item) {
         if (!item.name.equals("Sulfuras, Hand of Ragnaros") && !item.name.equals("Eternal Artifact")) {
             item.sellIn = item.sellIn - 1;
         }
+    }
 
+    private void updateItemQualityPostSellIn(Item item) {
         if (item.sellIn < 0) {
             if (!item.name.equals("Aged Brie")) {
                 if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
@@ -83,7 +95,9 @@ public class GildedRose {
                 item.quality = item.quality + 1;
             }
         }
+    }
 
+    private void enforceQualityBounds(Item item) {
         // Ensure quality bounds
         if (item.quality > 50 && !item.name.equals("Sulfuras, Hand of Ragnaros")) {
             item.quality = 50;
