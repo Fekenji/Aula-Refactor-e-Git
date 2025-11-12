@@ -17,12 +17,15 @@ public class Item {
     }
 
     private void updateItemQuality() {
-        if (!name.equals("Aged Brie")
-                && !name.equals("Backstage passes to a TAFKAL80ETC concert")
-                && !name.equals("Conjured Mana Cake")
-                && !name.equals("Eternal Artifact")) {
+        boolean isAgedBrie = name.equals("Aged Brie");
+        boolean isBackstagePass = name.equals("Backstage passes to a TAFKAL80ETC concert");
+        boolean isConjured = name.equals("Conjured Mana Cake");
+        boolean isEternal = name.equals("Eternal Artifact");
+        boolean isSulfuras = name.equals("Sulfuras, Hand of Ragnaros");
+
+        if (!isAgedBrie && !isBackstagePass && !isConjured && !isEternal) {
             if (quality > 0) {
-                if (!name.equals("Sulfuras, Hand of Ragnaros")) {
+                if (!isSulfuras) {
                     quality = quality - 1;
                     // Additional degradation for perishable items
                     if (name.contains("Perishable")) {
@@ -33,7 +36,7 @@ public class Item {
         } else {
             if (quality < 50) {
                 quality = quality + 1;
-                if (name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                if (isBackstagePass) {
                     if (sellIn < 11) {
                         if (quality < 50) {
                             quality = quality + 1;
@@ -44,10 +47,10 @@ public class Item {
                             quality = quality + 1;
                         }
                     }
-                } else if (name.equals("Conjured Mana Cake")) {
+                } else if (isConjured) {
                     // Conjured items degrade twice as fast
                     quality = quality + 1; // But for quality increase? Wait, adjust logic
-                } else if (name.equals("Eternal Artifact")) {
+                } else if (isEternal) {
                     // Increases quality over time, but slowly
                     if (sellIn % 2 == 0) {
                         quality = quality + 1;
