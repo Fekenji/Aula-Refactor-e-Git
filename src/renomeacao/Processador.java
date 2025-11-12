@@ -11,12 +11,12 @@ package renomeacao;
  */
 public class Processador {
     
-    public void proc(String txt, int n) {
-        String r = "";
-        for (int i = 0; i < n; i++) {
-            r = r + txt;
+    public void repetidordeTexto(String texto, int quantRepeticoes) {
+        String textoRepetido = "";
+        for (int i = 0; i < quantRepeticoes; i++) {
+            textoRepetido = textoRepetido + texto;
         }
-        System.out.println(r);
+        System.out.println(textoRepetido);
     }
     
     public int calc(int a, int b) {

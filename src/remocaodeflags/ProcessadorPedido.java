@@ -12,17 +12,14 @@ package remocaodeflags;
  */
 public class ProcessadorPedido {
     
-    public void processar(Pedido pedido, boolean aplicarDesconto) {
+    public void processarsemDesconto(Pedido pedido) {
+        System.out.println("Valor sem desconto: " + pedido.getValor());
+    }
+
+    public void processarcomDesconto(Pedido pedido) {
         double valor = pedido.getValor();
-        
-        if (aplicarDesconto) {
-            valor = valor * 0.9;
-            System.out.println("Desconto aplicado: " + valor);
-        } else {
-            System.out.println("Valor sem desconto: " + valor);
-        }
-        
-        pedido.setValor(valor);
+        valor = valor * 0.9;
+        System.out.println("Desconto aplicado: " + valor);
     }
 }
 

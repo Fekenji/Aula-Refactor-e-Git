@@ -10,17 +10,10 @@ package substituicaodecondicionalporpolimorfismo;
  * DICA: Use herança e polimorfismo para eliminar condicionais baseados em tipo.
  */
 public class CalculadoraImposto {
-    
-    public double calcularImposto(String tipo, double valor) {
-        if (tipo.equals("PESSOA_FISICA")) {
-            return valor * 0.10;
-        } else if (tipo.equals("PESSOA_JURIDICA")) {
-            return valor * 0.15;
-        } else if (tipo.equals("MEI")) {
-            return valor * 0.05;
-        } else {
-            return valor * 0.20;
-        }
+
+
+    public double calcularImposto(Contribuinte contribuinte, double valor) {
+        return contribuinte.calcularImposto(valor);
     }
 }
 
